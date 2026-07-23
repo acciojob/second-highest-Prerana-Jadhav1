@@ -8,35 +8,36 @@
 
 <body>	
 	<script>
-		function secondHighest(arr) {
-			let maxElement=parseInt(arr[0]);
+function secondHighest(arr) {
+    let max = -Infinity;
+    let second = -Infinity;
 
-			for (let i = 0; i < arr.length; i++) {
-				if (parseInt(arr[i])>maxElement) {
-					maxElement=parseInt(arr[i]);
-				}
-			}
+    for (let i = 0; i < arr.length; i++) {
+        let num = Number(arr[i]);
 
-			let res=Number.MIN_SAFE_INTEGER;
-			for (let i = 0; i < arr.length; i++) {
-				if (parseInt(arr[i])>res && parseInt(arr[i])<maxElement) {
-					res=parseInt(arr[i]);
-				}
-			}
+        if (num > max) {
+            second = max;
+            max = num;
+        } else if (num > second && num < max) {
+            second = num;
+        }
+    }
 
-			return res===Number.MIN_SAFE_INTEGER ? "-Infinity" : res;
-		}
+    return second;
+}
 
-		function Main() {
-			var n = prompt("Enter the number of elements");
-			var arr = [];
-			for (var i = 0; i < n; i++) {
-				arr[i] = prompt("Enter element " + (i+1));
-			}
-			alert(secondHighest(arr));  
-		}
-		Main();
-	</script>
+function Main() {
+    var n = prompt("Enter the number of elements");
+    var arr = [];
+
+    for (var i = 0; i < n; i++) {
+        arr[i] = prompt("Enter element " + (i + 1));
+    }
+
+    alert(secondHighest(arr));
+}
+Main();
+</script>
 
     <script type="text/javascript" src="./script.js">
 </script>
