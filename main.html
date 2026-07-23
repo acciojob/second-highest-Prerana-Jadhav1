@@ -9,8 +9,22 @@
 <body>	
 	<script>
 		function secondHighest(arr) {
-			//Write your code here
-			
+			let maxElement=parseInt(arr[0]);
+
+			for (let i = 0; i < arr.length; i++) {
+				if (parseInt(arr[i])>maxElement) {
+					maxElement=parseInt(arr[i]);
+				}
+			}
+
+			let res=Number.MIN_SAFE_INTEGER;
+			for (let i = 0; i < arr.length; i++) {
+				if (parseInt(arr[i])>res && parseInt(arr[i])<maxElement) {
+					res=parseInt(arr[i]);
+				}
+			}
+
+			return res===Number.MIN_SAFE_INTEGER ? "-Infinity" : res;
 		}
 
 		function Main() {
@@ -19,7 +33,7 @@
 			for (var i = 0; i < n; i++) {
 				arr[i] = prompt("Enter element " + (i+1));
 			}
-			alert(secondHighest(arr));
+			alert(secondHighest(arr));  
 		}
 		Main();
 	</script>
